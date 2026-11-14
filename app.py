@@ -1,7 +1,8 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 
-app = Flask(__name__, static_url_path='/static', static_folder='static')
-app.secret_key = "preview-mode-secret-key"
+app = Flask(__name__, static_url_path='/static', static_folder='public/static')
+app.secret_key = os.environ.get("SECRET_KEY", "dev-only-key")
 
 DUMMY_CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"
 
